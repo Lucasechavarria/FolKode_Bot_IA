@@ -1,3 +1,5 @@
+Un potente asistente de IA multilingüe (ES, EN, PT) construido con Google Gemini, React y Vite. Cuenta con un planificador de proyectos interactivos, análisis de documentos (PDF, TXT) e interacción por voz para capturar y calificar leads de forma inteligente para una empresa de software.
+
 # Run and deploy your AI Studio app
 
 This contains everything you need to run your app locally.
