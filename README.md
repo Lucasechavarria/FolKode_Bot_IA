@@ -1,5 +1,3 @@
-# 🤖 FolKode Group AI Assistant
-
 Asistente de IA interactivo construido con React, TypeScript y Google Gemini AI. Una aplicación web moderna que proporciona asistencia inteligente multiidioma con interfaz conversacional.
 
 ## 🚀 Instalación Rápida
