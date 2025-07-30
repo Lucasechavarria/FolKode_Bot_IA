@@ -31,7 +31,12 @@ export const useSpeech = (
 
         let finalTranscript = '';
         recognition.onresult = (event) => {
-            finalTranscript = event.results[0][0].transcript;
+            // Acceso universal al transcript usando indexación directa y forzando el tipo
+            const result = event.results[event.resultIndex] as any;
+            const transcript = result[0]?.transcript || '';
+            if (transcript) {
+                finalTranscript = transcript;
+            }
         };
 
         recognition.onend = () => {
@@ -51,25 +56,26 @@ export const useSpeech = (
     }, [isListening, language, onSpeechResult]);
 
     const speak = useCallback((textToSpeak: string) => {
-        if ('speechSynthesis' in window && textToSpeak) {
-            speechSynthesis.cancel(); // Cancel any previous speech
-            const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        if (typeof window !== 'undefined' && 'speechSynthesis' in window && textToSpeak) {
+            window.speechSynthesis.cancel(); // Cancel any previous speech
+            const utterance = new window.SpeechSynthesisUtterance(textToSpeak);
             if (language) utterance.lang = language;
-            
             if (isConversationMode) {
                 utterance.onend = () => {
                     startListening();
                 };
             }
-            speechSynthesis.speak(utterance);
+            window.speechSynthesis.speak(utterance);
         }
     }, [language, isConversationMode, startListening]);
     
     // Cleanup speechSynthesis on component unmount or mode change
     useEffect(() => {
         return () => {
-            if (speechSynthesis.speaking) {
-                speechSynthesis.cancel();
+            if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+                if (window.speechSynthesis.speaking) {
+                    window.speechSynthesis.cancel();
+                }
             }
         }
     }, [isConversationMode]);
