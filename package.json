@@ -1,0 +1,25 @@
+{
+  "name": "bot-folkode",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An intelligent chatbot named FolKode to answer questions about FolKode Group's services in English, Spanish, and Portuguese. It captures leads and provides a seamless, easy-to-understand user experience, powered by the Gemini API.",
+  "dependencies": {
+    "@google/genai": "0.14.0",
+    "react": "19.0.0-rc.0",
+    "react-dom": "19.0.0-rc.0",
+    "react-markdown": "9.0.1",
+    "remark-gfm": "4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.3",
+    "vite": "^7.1.2"
+  },
+  "scripts": {
+    "dev": "vite",
+    "start": "echo \"This project doesn't have a start script. Open index.html in a browser.\"",
+    "build": "vite build",
+    "test": "echo \"To run tests, open test-runner.html in a browser.\""
+  }
+}
